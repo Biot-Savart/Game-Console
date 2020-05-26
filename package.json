@@ -1,6 +1,8 @@
 {
   "name": "game-console",
   "version": "0.1.0",
+  "author": "Ryno Myburgh",
+  "license": "ISC",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
