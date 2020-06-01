@@ -1,14 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">
-        Home
-      </router-link> |
-      <router-link to="/about">
-        About
-      </router-link>
+    <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Console</h3>
+      <nav class="nav nav-masthead justify-content-center" id="nav">
+        <router-link to="/" class="nav-link">Home</router-link> | 
+        <router-link to="/about" class="nav-link">About</router-link>
+      </nav>
     </div>
+  </header>
+
+    <main role="main" class="inner cover">
     <router-view />
+    </main>
+
   </div>
 </template>
 
@@ -18,19 +23,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
+</style>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss">
+  @import "./scss/_variables.scss";
+  @import "./scss/_global.scss";
 </style>
