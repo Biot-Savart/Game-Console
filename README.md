@@ -16,6 +16,11 @@ npm run serve
 npm run build
 ```
 
+### Compiles and deployes Github Page
+```
+npm run gh-pages-deploy
+```
+
 ### Lints and fixes files
 ```
 npm run lint
