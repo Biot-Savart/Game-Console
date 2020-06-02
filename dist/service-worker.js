@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.0add9932f4e1f6ed63c5f3b086a1be49.js"
+  "./precache-manifest.0add9932f4e1f6ed63c5f3b086a1be49.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "game-console"});
