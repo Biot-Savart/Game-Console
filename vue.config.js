@@ -8,11 +8,10 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `
-          @import "@/scss/_variables.scss";
-          @import "@/scss/_global.scss";
-        `
+        prependData: '\n          @import "@/scss/_variables.scss";\n          @import "@/scss/_global.scss";\n        '
       }
     }
   },
+
+  publicPath: '/game-console/dist/'
 }
