@@ -13,5 +13,5 @@ module.exports = {
     }
   },
 
-  publicPath: '/game-console/dist/'
+  publicPath: "/game-console/"
 }
