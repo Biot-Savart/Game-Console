@@ -3,8 +3,13 @@
     import { ref } from "vue";
     import $ from "jquery";
 
+    import ArrowButtons from '@/components/ArrowButtons.vue';
+
 export default {
   name: "Tetris",
+  components: {
+    ArrowButtons,
+  },
   setup() {
     const grid = document.querySelector(".grid");
     let squares = Array.from(document.querySelectorAll(".grid div"));
@@ -174,8 +179,10 @@ export default {
         else if (e.keyCode === 39)
             this.moveRight();
         else if (e.keyCode === 40) {
-            clearInterval(this.timerId);
-            this.timerId = setInterval(this.moveDown, 100);
+            if (e.click === false) {
+                clearInterval(this.timerId);
+                this.timerId = setInterval(this.moveDown, 100);
+            }            
             this.moveDown();
         }
     }
@@ -556,10 +563,8 @@ export default {
     >
       Start/Pause
     </button>
+    <ArrowButtons v-on:arrow-click="control($event)" />
     </div>
-          
-
-
 
     </div>
   </div>

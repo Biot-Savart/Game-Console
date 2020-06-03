@@ -1,6 +1,6 @@
 <script>
 // @ is an alias to /src
-import Tetris from '@/games/Tetris.vue'
+import Tetris from '@/games/Tetris.vue';
 
 export default {
   name: 'Console',

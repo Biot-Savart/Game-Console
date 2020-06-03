@@ -111,19 +111,28 @@ body {
 @media (max-width: $breakpoint-tablet) {
     .cover {
       padding: 0.5rem 0.7rem;
+      height: 87%;
     }
     .console {
       margin: 0;
     }
+     .masthead-brand {
+        font-size: 1.5rem;
+      }
 }
 
 @media (max-width: $breakpoint-phone) {
     .cover {
       padding: 0.5rem 0.5rem;
+      padding-top: 0;
+      height: 88%;
     }
     .console {
       border: 3px solid white;
     }
+    .masthead-brand {
+        font-size: 1.3rem;
+      }
 }
 
 .tetris {
@@ -174,6 +183,14 @@ body {
   .mini-grid div {
     height: 30px;
     width: 30px;
+  }
+
+  .controls {
+    .arrowButtons {
+      button {
+        margin: 2px;
+      }
+    }
   }
 
   @media (max-width: $breakpoint-tablet) {
