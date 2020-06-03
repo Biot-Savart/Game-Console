@@ -167,16 +167,17 @@ export default {
 
     //assign functions to keyCodes
     function control(e) {
-        clearInterval(this.timerId);
-        this.timerId = setInterval(this.moveDown, 100);
         if (e.keyCode === 37)
             this.moveLeft();
         else if (e.keyCode === 38)
             this.rotate();
         else if (e.keyCode === 39)
             this.moveRight();
-        else if (e.keyCode === 40)
+        else if (e.keyCode === 40) {
+            clearInterval(this.timerId);
+            this.timerId = setInterval(this.moveDown, 100);
             this.moveDown();
+        }
     }
 
     //move down function
@@ -302,19 +303,7 @@ export default {
 </script>
 
 <template>
-  <div class="tetris">
-    <h3>Tetris</h3>
-
-    <h3>Score: <span id="score" /></h3>
-    <button
-      id="start-button"
-      type="button"
-      class="btn btn-primary"
-    >
-      Start/Pause
-    </button>
-
-
+  <div class="tetris">    
     <div class="container">
       <div class="grid">
         <div />
@@ -527,36 +516,51 @@ export default {
         <div />
         <div />
 
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
-        <div class="taken" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
+        <div class="taken hide" />
       </div>
 
-      <div class="mini-grid">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
+    <div class="controls">
+        <div class="mini-grid">
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+        </div>
+
+        <h3>Score: <span id="score" /></h3>
+    <button
+      id="start-button"
+      type="button"
+      class="btn btn-primary"
+    >
+      Start/Pause
+    </button>
+    </div>
+          
+
+
+
     </div>
   </div>
 </template>
