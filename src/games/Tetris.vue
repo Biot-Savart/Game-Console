@@ -149,7 +149,7 @@ export default {
     displayShape: displayShape,
     addScore: addScore,
     gameOver: gameOver,
-    stopControl: stopControl,
+    downBtn: downBtn,
   } 
 }
 
@@ -186,15 +186,15 @@ export default {
         }
     }
 
-    function stopControl(e) {
-        this.activeKey = e;
+    function downBtn(e) {
         clearInterval(this.timerId);
-        this.timerId = setInterval(this.moveDown, 1000);
+        this.activeKey = e;
+        this.timerId = setInterval(this.moveDown, 50);        
+        this.moveDown();
     }
 
     //move down function
     function moveDown() {
-        //debugger;
         this.undraw();
         this.currentPosition += this.width;
         this.draw();
@@ -205,6 +205,8 @@ export default {
         if(this.current.some(index => this.squares[this.currentPosition + index + this.width].classList.contains("taken"))) {
             this.current.forEach(index => this.squares[this.currentPosition + index].classList.add("taken"));
             //start a new Tetromino falling
+            clearInterval(this.timerId);
+            this.timerId = setInterval(this.moveDown, 1000);
             this.random = this.nextRandom;
             this.nextRandom = Math.floor(Math.random() * this.theTetrominoes.length);
             this.current = this.theTetrominoes[this.random][this.currentRotation];
@@ -573,7 +575,7 @@ export default {
         </button>
         <ArrowButtons
           @arrow-click="control($event)"
-          @down-release="stopControl($event)"
+          @down-click="downBtn($event)"
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ export default {
 	name:'ArrowButtons',
 	methods: {
 		btnClick: btnClick,
-		mouseUp: mouseUp,
+		downClick: downClick,
 	},
 }
 
@@ -12,9 +12,9 @@ function btnClick(button) {
 	this.$emit("arrow-click", event);
 }
 
-function mouseUp(button) {
+function downClick(button) {
 	const event = {keyCode: Number(button)};
-	this.$emit("down-release", event);
+	this.$emit("down-click", event);
 }
 </script>
 
@@ -50,8 +50,7 @@ function mouseUp(button) {
       id="down"
       type="button"
       class="btn btn-warning"
-      @mousedown="btnClick('40')"
-      @mouseup="mouseUp('40')"
+      @click="downClick('40')"
     >
       <i class="fas fa-arrow-alt-circle-down" />
     </button>
