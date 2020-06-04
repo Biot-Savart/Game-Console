@@ -148,7 +148,8 @@ export default {
     rotate: rotate,
     displayShape: displayShape,
     addScore: addScore,
-    gameOver: gameOver
+    gameOver: gameOver,
+    stopControl: stopControl,
   } 
 }
 
@@ -179,12 +180,16 @@ export default {
         else if (e.keyCode === 39)
             this.moveRight();
         else if (e.keyCode === 40) {
-            if (e.click === false) {
-                clearInterval(this.timerId);
-                this.timerId = setInterval(this.moveDown, 100);
-            }            
+            clearInterval(this.timerId);
+            this.timerId = setInterval(this.moveDown, 100);        
             this.moveDown();
         }
+    }
+
+    function stopControl(e) {
+        this.activeKey = e;
+        clearInterval(this.timerId);
+        this.timerId = setInterval(this.moveDown, 1000);
     }
 
     //move down function
@@ -312,7 +317,9 @@ export default {
 <template>
   <div class="tetris">    
     <div class="container">
-        <h3 class="score">Score: <span id="score" /></h3>
+      <h3 class="score">
+        Score: <span id="score" />
+      </h3>
       <div class="grid">
         <div />
         <div />
@@ -536,37 +543,39 @@ export default {
         <div class="taken hide" />
       </div>
 
-    <div class="controls">
+      <div class="controls">
         <div class="mini-grid">
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
         </div>
 
         
-    <button
-      id="start-button"
-      type="button"
-      class="btn btn-primary"
-    >
-      Start/Pause
-    </button>
-    <ArrowButtons v-on:arrow-click="control($event)" />
-    </div>
-
+        <button
+          id="start-button"
+          type="button"
+          class="btn btn-primary"
+        >
+          Start/Pause
+        </button>
+        <ArrowButtons
+          @arrow-click="control($event)"
+          @down-release="stopControl($event)"
+        />
+      </div>
     </div>
   </div>
 </template>
