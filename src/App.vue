@@ -1,3 +1,16 @@
+<script>
+  import {version} from '../package.json';
+
+  export default {
+    name: 'App',
+    setup() {
+      const appVersion = version;
+
+      return {appVersion};
+    },
+  }
+</script>
+
 <template>
   <div id="app">
     <header class="masthead mb-auto">
@@ -30,6 +43,7 @@
       class="inner cover"
     >
       <router-view />
+      <span class="version">Version {{appVersion}}</span>
     </main>
   </div>
 </template>

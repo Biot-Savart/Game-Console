@@ -71,6 +71,10 @@ body {
   border-bottom-color: #fff;
 }
 
+.about {
+  color: grey;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
@@ -108,6 +112,14 @@ body {
   height: 100%;
 }
 
+.version {
+  color: grey;
+  float: right;
+  margin-top: -55px;
+  margin-right: 42px;
+  font-size: 0.7rem;
+}
+
 @media (max-width: $breakpoint-tablet) {
     .cover {
       padding: 0.5rem 0.7rem;
@@ -119,6 +131,11 @@ body {
      .masthead-brand {
         font-size: 1.5rem;
       }
+
+    .version {
+      margin-top: -20px;
+      margin-right: 12px;
+    }
 }
 
 @media (max-width: $breakpoint-phone) {
@@ -131,7 +148,7 @@ body {
       border: 3px solid white;
     }
     .masthead-brand {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
 }
 
