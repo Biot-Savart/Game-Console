@@ -4,6 +4,7 @@
     import $ from "jquery";
 
     import ArrowButtons from '@/components/ArrowButtons.vue';
+    import PouchDB from "pouchdb";
 
 export default {
   name: "Tetris",
@@ -106,7 +107,10 @@ export default {
         [0,displayWidth,displayWidth+1,displayWidth*2+1]    //reverseZTetromino
     ];
 
-     return { grid, squares, scoreDisplay, startBtn, nextRandom, timerId, score, colours, lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, theTetrominoes, currentPosition, currentRotation, random, current, displaySquares, displayWidth, displayIndex, upNextTetrominoes, width, activeKey };
+    const db = null;
+    const highScore = 0;
+
+     return { grid, squares, scoreDisplay, startBtn, nextRandom, timerId, score, colours, lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, theTetrominoes, currentPosition, currentRotation, random, current, displaySquares, displayWidth, displayIndex, upNextTetrominoes, width, activeKey, db, highScore };
   },
   mounted() {
      const self = this;
@@ -134,6 +138,25 @@ export default {
             self.nextRandom = Math.floor(Math.random() * self.theTetrominoes.length);
             self.displayShape();
         }
+    });
+
+    this.db = new PouchDB("tetris");
+
+    this.db.get("high-score").then(doc => {
+        debugger;
+        self.highScore = doc.score;
+    }).catch(function (err) {
+        if (err.status === 404) {
+            const highScore = {
+                _id: "high-score",
+                score: 0,
+                timestamp: Date.now(),
+            };
+
+            self.db.put(highScore);
+        }
+        else
+            console.log(err);
     });
 
   },
@@ -310,6 +333,9 @@ export default {
     function gameOver() {
         const self = this;
         if (this.current.some(index => self.squares[self.currentPosition + index].classList.contains("taken"))) {
+
+            
+
             this.scoreDisplay.innerHTML = this.score + " - end";
             clearInterval(this.timerId);
         }
