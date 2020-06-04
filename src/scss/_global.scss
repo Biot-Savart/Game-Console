@@ -187,10 +187,19 @@ body {
 
   .controls {
     .arrowButtons {
+      margin-top: 60%;
       button {
         margin: 2px;
       }
     }
+  }
+
+  .score {
+    position: absolute;
+    margin-top: -18px;
+    background-color: #333;
+    padding: 0 1rem;
+    font-size: 1.5rem;
   }
 
   @media (max-width: $breakpoint-tablet) {
@@ -203,6 +212,12 @@ body {
       .container {
         padding: 0rem 0.5rem;
       }
+
+      .score {
+        margin-top: -13px;
+        padding: 0 0.7rem;
+        font-size: 1rem;
+      }
   }
 
   @media (max-width: $breakpoint-phone) {
@@ -211,9 +226,26 @@ body {
       }
       .mini-grid {
         margin: 0.7rem 0.2rem;
+        min-width: 80px;
+        width: 80px;
+        height: 80px;
+      }
+      .mini-grid div {
+        height: 20px;
+        width: 20px;
       }
       .container {
         padding: 0rem 0.2rem;
+
+        .btn {
+          font-size: 0.7rem;
+        }
+      }
+
+      .score {
+        margin-top: -9px;
+        padding: 0 0.5rem;
+        font-size: 0.8rem;
       }
   }
 }

@@ -67,10 +67,10 @@ export default {
     ];
 
     const reverseLTetromino = [
-        [width-1, width*2-1, width*3-1, width*3 -2],
+        [1, width+1, width*2+1, width*2],
         [0, width, width+1, width+2],
-        [width-1, width, width*2-1, width*3-1],
-        [width-2, width - 1, width, width*2]
+        [0, width, width*2, 1],
+        [0, 1, 2, width]
     ];
 
 
@@ -303,7 +303,7 @@ export default {
     function gameOver() {
         const self = this;
         if (this.current.some(index => self.squares[self.currentPosition + index].classList.contains("taken"))) {
-            this.scoreDisplay.innerHTML = "end";
+            this.scoreDisplay.innerHTML = this.score + " - end";
             clearInterval(this.timerId);
         }
     }
@@ -312,6 +312,7 @@ export default {
 <template>
   <div class="tetris">    
     <div class="container">
+        <h3 class="score">Score: <span id="score" /></h3>
       <div class="grid">
         <div />
         <div />
@@ -555,7 +556,7 @@ export default {
             <div />
         </div>
 
-        <h3>Score: <span id="score" /></h3>
+        
     <button
       id="start-button"
       type="button"
