@@ -191,7 +191,7 @@ body {
     min-width: 120px;
     width: 120px;
     height: 120px;
-     margin: 1rem;
+     margin: 1rem 1rem 0.5rem 1rem;
     display: flex;
     flex-wrap: wrap;
     background-color: grey;
@@ -208,6 +208,15 @@ body {
       button {
         margin: 2px;
       }
+    }
+
+    .wide {
+      width: 50px;
+    }
+
+    .highscore {
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -267,10 +276,24 @@ body {
   }
 }
 
-@media (max-width: $breakpoint-tablet) {
-      
+.scoreModals {
+  color: $red;
+
+  .modal-header {
+    background-color: red;
+    color: white;
+    padding: 0.5rem;
   }
 
-  @media (max-width: $breakpoint-phone) {
-      
+  .modal-footer {
+    background-color: red;
+    color: white;
+    padding: 0;
   }
+
+  .modal-body {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0.5rem;
+  }
+}

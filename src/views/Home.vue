@@ -6,12 +6,24 @@ export default {
   name: 'Console',
   components: {
     Tetris,
-  }
+  },
+  setup() {
+    const tetrisKey = 0;
+
+    return { tetrisKey };
+  },
+  methods: {
+    tetrisReset: tetrisReset,
+  },
+}
+
+function tetrisReset() {
+  this.tetrisKey++;
 }
 </script>
 
 <template>
   <div class="console">
-    <Tetris />
+    <Tetris @tetris-reset="tetrisReset" :key="tetrisKey"/>
   </div>
 </template>

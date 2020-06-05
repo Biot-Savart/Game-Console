@@ -4,12 +4,14 @@
     import $ from "jquery";
 
     import ArrowButtons from '@/components/ArrowButtons.vue';
+    import ScoreModals from '@/components/ScoreModals.vue';
     import PouchDB from "pouchdb";
 
 export default {
   name: "Tetris",
   components: {
     ArrowButtons,
+    ScoreModals,
   },
   setup() {
     const grid = document.querySelector(".grid");
@@ -109,8 +111,9 @@ export default {
 
     const db = null;
     const highScore = 0;
+    const gameover = false;
 
-     return { grid, squares, scoreDisplay, startBtn, nextRandom, timerId, score, colours, lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, theTetrominoes, currentPosition, currentRotation, random, current, displaySquares, displayWidth, displayIndex, upNextTetrominoes, width, activeKey, db, highScore };
+     return { grid, squares, scoreDisplay, startBtn, nextRandom, timerId, score, colours, lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, theTetrominoes, currentPosition, currentRotation, random, current, displaySquares, displayWidth, displayIndex, upNextTetrominoes, width, activeKey, db, highScore, gameover };
   },
   mounted() {
      const self = this;
@@ -121,6 +124,21 @@ export default {
         clearInterval(self.timerId);
        self.timerId = setInterval(self.moveDown, 1000);
     });
+
+    $(".grid").empty();
+    for (let x = 0; x < 200; x++) {
+        $(".grid").append("<div />");
+    }
+
+    for (let x = 0; x < 10; x++) {
+        $(".grid").append("<div class='taken hide' />");
+    }
+
+    $(".mini-grid").empty();
+    for (let x = 0; x < 16; x++) {
+        $(".mini-grid").append("<div />");
+    }
+
      //$(document).keyup(this.control);
     this.grid = document.querySelector(".grid");
      this.squares = Array.from(document.querySelectorAll(".grid div"));
@@ -143,7 +161,6 @@ export default {
     this.db = new PouchDB("tetris");
 
     this.db.get("high-score").then(doc => {
-        debugger;
         self.highScore = doc.score;
     }).catch(function (err) {
         if (err.status === 404) {
@@ -173,6 +190,7 @@ export default {
     addScore: addScore,
     gameOver: gameOver,
     downBtn: downBtn,
+    reset: reset,
   } 
 }
 
@@ -196,6 +214,9 @@ export default {
 
     //assign functions to keyCodes
     function control(e) {
+        if (this.gameover === true)
+            return
+
         if (e.keyCode === 37)
             this.moveLeft();
         else if (e.keyCode === 38)
@@ -332,13 +353,32 @@ export default {
     //game over
     function gameOver() {
         const self = this;
-        if (this.current.some(index => self.squares[self.currentPosition + index].classList.contains("taken"))) {
+        if (self.gameover === true)
+            return;
 
-            
+        if (this.current.some(index => self.squares[self.currentPosition + index].classList.contains("taken"))) {
+            self.gameover = true;
+
+            self.db.get("high-score").then(doc => {
+                if (self.score > doc.score) {
+                    self.highScore = self.score;
+                    $("#highScoreModal").modal("show");
+                } else
+                    $("#scoreModal").modal("show");
+
+                doc.score = self.highScore;
+                doc.timestamp = Date.now();
+
+                return self.db.put(doc);
+            })
 
             this.scoreDisplay.innerHTML = this.score + " - end";
             clearInterval(this.timerId);
         }
+    }
+
+    function reset() {
+        this.$emit("tetris-reset");
     }
 </script>
 
@@ -348,249 +388,11 @@ export default {
       <h3 class="score">
         Score: <span id="score" />
       </h3>
-      <div class="grid">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-        <div class="taken hide" />
-      </div>
+      <div class="grid"></div>
 
       <div class="controls">
-        <div class="mini-grid">
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-
+        <div class="mini-grid"></div>
+        <div class="highscore"><i class="fas fa-medal"></i> High Score: {{highScore}} <i class="fas fa-medal"></i></div>
         
         <button
           id="start-button"
@@ -599,11 +401,14 @@ export default {
         >
           Start/Pause
         </button>
+
         <ArrowButtons
           @arrow-click="control($event)"
           @down-click="downBtn($event)"
         />
       </div>
     </div>
+
+    <ScoreModals :score="score" :highScore="highScore" @reset="reset"/>
   </div>
 </template>

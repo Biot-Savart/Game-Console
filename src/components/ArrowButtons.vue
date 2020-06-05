@@ -23,7 +23,7 @@ function downClick(button) {
     <button
       id="up"
       type="button"
-      class="btn btn-warning"
+      class="btn btn-warning wide"
       @click="btnClick('38')"
     >
       <i class="fas fa-arrow-alt-circle-up" />
@@ -49,7 +49,7 @@ function downClick(button) {
     <button
       id="down"
       type="button"
-      class="btn btn-warning"
+      class="btn btn-warning wide"
       @click="downClick('40')"
     >
       <i class="fas fa-arrow-alt-circle-down" />
