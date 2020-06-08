@@ -43,7 +43,7 @@
       class="inner cover"
     >
       <router-view />
-      <span class="version">Version {{appVersion}}</span>
+      <span class="version">Version {{ appVersion }}</span>
     </main>
   </div>
 </template>

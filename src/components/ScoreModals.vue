@@ -18,42 +18,96 @@ function reset() {
 <template>
   <div class="scoreModals">
     <!-- High Score Modal -->
-    <div class="modal fade" id="highScoreModal" tabindex="-1" role="dialog" aria-labelledby="highScoreodalLabel" aria-hidden="true">
+    <div
+      id="highScoreModal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="highScoreodalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title"><i class="fas fa-bahai"></i> New High Score!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title">
+              <i class="fas fa-bahai" /> New High Score!
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <i class="fas fa-medal"></i> {{highScore}} <i class="fas fa-medal"></i>
+            <i class="fas fa-medal" /> {{ highScore }} <i class="fas fa-medal" />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal" @click="reset()">Play Again</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-dismiss="modal"
+              @click="reset()"
+            >
+              Play Again
+            </button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Score Modal -->
-    <div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="scoreModalLabel" aria-hidden="true">
+    <div
+      id="scoreModal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="scoreModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title"><i class="fas fa-bahai"></i> Final Score</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title">
+              <i class="fas fa-bahai" /> Final Score
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <i class="fas fa-poo"></i> {{score}} <i class="fas fa-poo"></i>
+            <i class="fas fa-poo" /> {{ score }} <i class="fas fa-poo" />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal" @click="reset()">Play Again</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-dismiss="modal"
+              @click="reset()"
+            >
+              Play Again
+            </button>
           </div>
         </div>
       </div>

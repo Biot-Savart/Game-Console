@@ -388,11 +388,13 @@ export default {
       <h3 class="score">
         Score: <span id="score" />
       </h3>
-      <div class="grid"></div>
+      <div class="grid" />
 
       <div class="controls">
-        <div class="mini-grid"></div>
-        <div class="highscore"><i class="fas fa-medal"></i> High Score: {{highScore}} <i class="fas fa-medal"></i></div>
+        <div class="mini-grid" />
+        <div class="highscore">
+          <i class="fas fa-medal" /> High Score: {{ highScore }} <i class="fas fa-medal" />
+        </div>
         
         <button
           id="start-button"
@@ -409,6 +411,10 @@ export default {
       </div>
     </div>
 
-    <ScoreModals :score="score" :highScore="highScore" @reset="reset"/>
+    <ScoreModals
+      :score="score"
+      :high-score="highScore"
+      @reset="reset"
+    />
   </div>
 </template>

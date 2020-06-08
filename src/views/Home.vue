@@ -24,6 +24,9 @@ function tetrisReset() {
 
 <template>
   <div class="console">
-    <Tetris @tetris-reset="tetrisReset" :key="tetrisKey"/>
+    <Tetris
+      :key="tetrisKey"
+      @tetris-reset="tetrisReset"
+    />
   </div>
 </template>
