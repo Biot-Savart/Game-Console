@@ -3,6 +3,8 @@
  */
 $breakpoint-tablet: 768px;
 $breakpoint-phone: 425px;
+$breakpoint-phone-medium: 375px;
+$breakpoint-phone-small: 320px;
 
 /* Links */
 a,
@@ -140,6 +142,14 @@ body {
       }
 }
 
+.score {
+  position: absolute;
+  margin-top: -18px;
+  background-color: #333;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+}
+
 .tetris {
   color: white;
   min-height: 100%;
@@ -206,14 +216,6 @@ body {
       margin-bottom: 0.5rem;
       font-size: 0.8rem;
     }
-  }
-
-  .score {
-    position: absolute;
-    margin-top: -18px;
-    background-color: #333;
-    padding: 0 1rem;
-    font-size: 1.5rem;
   }
 
   @media (max-width: $breakpoint-tablet) {
@@ -285,3 +287,199 @@ body {
     padding: 0.5rem;
   }
 }
+
+.pacman {
+  color: white;
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 600px;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 566px;
+    height: 560px;
+    border: solid black;
+  }
+    
+  .grid div {
+      width: 20px;
+      height: 20px;
+  }
+
+  .pac-dot {
+      background-color: green;   
+      border: 5px solid $darkgrey;
+      box-sizing: border-box;
+  }
+
+  .wall {
+      background-color: blue;
+  }
+
+  .power-pellet {
+      background-color: $orange;
+      border-radius: 10px;
+  }
+
+  .blinky {
+      background-color: red;
+      border: none;
+  }
+
+  .pinky {
+      background-color: pink;
+      border: none;
+  }
+
+  .inky {
+      background-color: cyan;
+      border: none;
+  }
+
+  .clyde {
+      background-color: orange;
+      border: none;     
+  }
+
+  .pac-man {
+      background-color: yellow;
+      border-radius: 10px;
+  }
+
+  .scared-ghost {
+      background-color: aquamarine;
+      border: none;
+  }
+
+  .controls {
+    .arrowButtons {
+      margin-top: 60%;
+      button {
+        margin: 2px;
+      }
+    }
+
+    .wide {
+      width: 50px;
+    }
+
+    .highscore {
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    .grid {
+      min-width: 426px;
+      width: 426px;
+      height: 420px;
+    }
+    .grid div {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  @media (max-width: $breakpoint-phone) {
+    .container {
+      flex-direction: column;
+      padding-left: 0;
+      margin-left: -5px;
+    }
+
+    .score {
+      position: relative;
+      margin-top: -22px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      margin-left: 15px;
+
+      .arrowButtons {
+        margin-top: 0;
+        order: 2;
+        button {
+          margin: 2px;
+          padding: 0 1rem;
+          height: 24px;
+        }
+      }
+
+      .wide {
+        width: 50px;
+      }
+
+      .btn {
+        order: 3;
+        margin: 2px;
+          padding: 0 1rem;
+          height: 24px;
+      }
+
+      .highscore {
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        order: 1;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-phone-medium) {
+    .container {
+      flex-direction: column;
+      padding-left: 0;
+      margin-left: -5px;
+    }
+  }
+
+  @media (max-width: $breakpoint-phone-small) {
+    .grid {
+      min-width: 314px;
+      width: 314px;
+      height: 314px;
+    }
+    .grid div {
+      width: 11px;
+      height: 11px;
+    }
+
+    .container {
+      flex-direction: column;
+      padding-left: 0;
+      margin-left: -5px;
+    }
+
+    .arrowButtons {
+      margin-top: 0px;
+      button {
+        padding: 0 0 !important;
+        width: 37px !important;
+      }
+    }
+
+    .score {
+      margin-top: -10px;
+      margin-bottom: -7px
+    }
+  }
+  }
+
+  
+
+  
+

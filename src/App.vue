@@ -31,6 +31,13 @@
               >
                 <a class="dropdown-item dropdown-item-dark" href="#">Tetris <span class="sr-only">(current)</span></a>
               </router-link>
+
+              <router-link
+                to="/pacman"
+              >
+                <a class="dropdown-item dropdown-item-dark" href="#">Pacman</a>
+              </router-link>
+
             </div>
           </li>
           <li class="nav-item">
