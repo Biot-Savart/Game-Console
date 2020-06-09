@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(e,n,t){"use strict";t.r(n);var c=t("5c40"),o={class:"about"},a=Object(c["l"])("h1",null,"About",-1),l=Object(c["l"])("p",null,"A Game-console interface to play online games",-1);function s(e,n){return Object(c["s"])(),Object(c["g"])("div",o,[a,l])}const u={};u.render=s;n["default"]=u}}]);
+//# sourceMappingURL=about.07e90820.js.map
